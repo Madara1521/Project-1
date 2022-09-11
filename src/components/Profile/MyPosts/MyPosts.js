@@ -7,10 +7,10 @@ const MyPosts = () => {
             <div>
                 <textarea></textarea>
                 <button>Add post</button>
-                <button>Remove</button>
             </div>
             <div className={s.posts}>
-           <Post />
+           <Post message={"Hi, how are you?"} like={'16'}/>
+           <Post message={"It's my first post"} like={'13'}/>
         </div>
         </div>
 
