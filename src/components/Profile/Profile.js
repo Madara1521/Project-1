@@ -1,10 +1,11 @@
 import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
+import Kanoha from './Kanoha.jpg'
 
 const Profile = () => {
-    return  <div className={s.content}>
+    return  <div>
         <div>
-            <img src={'https://kartinkin.net/uploads/posts/2021-07/1625616711_9-kartinkin-com-p-arti-naruto-konokha-art-krasivo-10.jpg'} />
+            <img src={Kanoha}  alt={'kanoha.jpg'}/>
         </div>
         <div>
             ava + description

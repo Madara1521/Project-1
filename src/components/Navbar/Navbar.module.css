@@ -5,6 +5,9 @@
 
 .item {
     color: white;
+    border-width: 5px;
+    border-color: black;
+    border-style: groove;
 }
 
 .item.active {
