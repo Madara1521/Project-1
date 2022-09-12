@@ -1,15 +1,16 @@
 .nav {
     grid-area: n;
     background-color: darkred;
+    padding: 20px;
 }
 
 .item {
     color: white;
-    border-width: 5px;
-    border-color: black;
-    border-style: groove;
+    text-decoration: none;
+
 }
 
-.item.active {
-    color: gold;
+.active {
+    color: goldenrod;
+    text-decoration: none;
 }
