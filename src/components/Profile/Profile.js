@@ -1,17 +1,16 @@
 import s from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts";
 import Kanoha from './Kanoha.jpg'
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
-    return  <div>
+    return (
         <div>
-            <img src={Kanoha}  alt={'kanoha.jpg'}/>
+            <ProfileInfo />
+
+            <MyPosts/>
         </div>
-        <div>
-            ava + description
-        </div>
-        <MyPosts />
-    </div>
+    )
 }
 
 export default Profile
