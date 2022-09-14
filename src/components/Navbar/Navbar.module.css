@@ -2,11 +2,18 @@
     grid-area: n;
     background-color: darkred;
     padding: 20px;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .item {
     color: white;
     text-decoration: none;
+    border-color: black;
+    border-width: 5px;
+    border-style: dashed;
+    border-radius:  10px;
 
 }
 
