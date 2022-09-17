@@ -1,14 +1,16 @@
-import {rerenderEntireTree} from "../Render";
+let rerenderEntireTree = () => {
+    console.log('State changed')
+}
 
 let state = {
-    profilePage : {
+    profilePage: {
         posts: [
             {id: 1, message: 'Hi, how are you?', likesCount: 16},
             {id: 2, message: 'It\'s my first post', likesCount: 13}
         ],
         newPostText: 'Kanoha'
     },
-    dialogsPage : {
+    dialogsPage: {
         messages: [
             {id: 1, message: 'Hi!'},
             {id: 2, message: 'How is your neki4?'},
@@ -25,8 +27,7 @@ let state = {
 }
 
 
-
-export let addPost = () => {
+export const addPost = () => {
     let newPost = {
         id: 3,
         message: state.profilePage.newPostText,
@@ -34,14 +35,18 @@ export let addPost = () => {
     }
 
     state.profilePage.posts.push(newPost)
-    state.profilePage.newPostText= ''
+    state.profilePage.newPostText = ''
     rerenderEntireTree(state)
 }
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
 
     state.profilePage.newPostText = newText
     rerenderEntireTree(state)
+}
+
+export const subscribe = (observer) => {
+    rerenderEntireTree = observer //pattern observer
 }
 
 export default state
