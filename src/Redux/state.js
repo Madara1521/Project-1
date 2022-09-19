@@ -1,3 +1,7 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+
+
 let store = {
     _state: {
         profilePage: {
@@ -53,6 +57,14 @@ let store = {
 
 }
 
+
+export const addPostActionCreator = () => {
+    return {ADD_POST}
+
+}
+export const updateNEwPostActionCreator = (text) => {
+    return {UPDATE_NEW_POST_TEXT, newText: text}
+}
 
 export default store
 
