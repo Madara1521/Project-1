@@ -4,3 +4,7 @@
     max-height:150px;
     padding: 10px;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
