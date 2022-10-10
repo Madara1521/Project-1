@@ -1,4 +1,13 @@
 
+
 .descriptionBlock {
     padding: 10px;
 }
+
+.sizeImg {
+    background-size:1500px;
+    max-width:1500px;
+    max-height:500px;
+    padding: 10px;
+}
+

@@ -1,6 +1,7 @@
 import s from './ProfileInfo.module.css'
 import Kanoha from './../Kanoha.jpg'
 import Preloader from '../../common/Preloader/Preloader'
+import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -9,11 +10,12 @@ const ProfileInfo = (props) => {
 
   return (
     <div>
-      <div>
-        <img src={Kanoha} alt={'kanoha.jpg'}/>
-      </div>
+      {/*<div >*/}
+      {/*  <img src={Kanoha} alt={'kanoha.jpg'} className={s.sizeImg} />*/}
+      {/*</div>*/}
       <div className={s.descriptionBlock}>
-        <img src={props.profile.photos.large} />
+        <img src={props.profile.photos.large}/>
+        <ProfileStatus status={'Hello neki4'}/>
       </div>
     </div>
   )
