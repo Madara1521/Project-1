@@ -33,10 +33,10 @@ let store = {
         console.log('State changed')
     },
 
-    getState () {
+    getState() {
         return this._state
     },
-    subscribe (observer) {
+    subscribe(observer) {
         this._callSubscriber = observer //pattern observer
     },
 
