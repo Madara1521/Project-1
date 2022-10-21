@@ -1,4 +1,4 @@
-import {Field} from "redux-form";
+import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import React from "react";
@@ -17,4 +17,4 @@ let AddNewPostForm = (props) => {
   </form>;
 }
 
-export default AddNewPostForm
+export default reduxForm({form: 'ProfileAddNewPostForm'}) (AddNewPostForm)

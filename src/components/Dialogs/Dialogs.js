@@ -32,13 +32,10 @@ const Dialogs = (props) => {
       <div className={s.messages}>
         <div>{messagesElements}</div>
       </div>
-      <AddMessageFormRedux onSubmit={addNewMessage}/>
+      <AddMessageForm onSubmit={addNewMessage}/>
     </div>
   )
 }
 
-
-
-const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm'})(AddMessageForm)
 
 export default Dialogs
