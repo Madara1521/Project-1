@@ -5,6 +5,8 @@ import React from "react";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../Redux/dialogs-reducer";
 import {Navigate} from 'react-router-dom'
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../common/FormsControls/FormsControls";
+import AddMessageForm from "./AddMessageForm";
 
 const Dialogs = (props) => {
 
@@ -35,18 +37,7 @@ const Dialogs = (props) => {
   )
 }
 
-const AddMessageForm = (props) => {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-        <Field component={'textarea'} name={'newMessageBody'} placeholder={'Enter your message'}/>
-      </div>
-      <div>
-        <button>Add message</button>
-      </div>
-    </form>
-  )
-}
+
 
 const AddMessageFormRedux = reduxForm({form: 'dialogAddMessageForm'})(AddMessageForm)
 
