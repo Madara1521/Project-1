@@ -2,18 +2,20 @@ import React from 'react'
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
+import {connect} from "react-redux";
+import {login} from "../../Redux/auth-reducer";
 
 
 const LoginForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field placeholder={'login'} name={'login'}
+        <Field placeholder={'Email'} name={'email'}
                validate={[required]}
                component={Input} />
       </div>
       <div>
-        <Field placeholder={'password'} name={'password'}
+        <Field placeholder={'password'} name={'password'} type={'password'}
                validate={[required]}
                component={Input} />
       </div>
@@ -33,7 +35,7 @@ const LoginReduxForm = reduxForm ({form: 'login'}) (LoginForm)
 
 const Login = (props) => {
 const onSubmit = (formData) => {
-    console.log(formData)
+  props.login(formData.email, formData.password, formData.rememberMe)
 }
 
   return <div>
@@ -42,4 +44,4 @@ const onSubmit = (formData) => {
   </div>
 }
 
-export default Login
+export default connect (null, {login}) (Login)
