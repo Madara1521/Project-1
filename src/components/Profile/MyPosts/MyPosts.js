@@ -4,11 +4,11 @@ import React from "react";
 import AddNewPostForm from "./AddPostForm";
 
 const MyPosts = React.memo(props => {
-  console.log('RENDER!')
-
   let postsElements =
-    props.posts.map(p => <Post message={p.message} like={p.likesCount}/>
-    )
+    [...props.posts]
+      .reverse()
+      .map(p => <Post message={p.message} like={p.likesCount}/>
+      )
 
   let newPostElement = React.createRef()
 
