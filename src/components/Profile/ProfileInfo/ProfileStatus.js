@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 class ProfileStatus extends React.Component {
   state = {
     editMode: false,
@@ -26,15 +25,15 @@ class ProfileStatus extends React.Component {
     })
   }
 
-componentDidUpdate(prevProps, prevState, snapshot) {
-  if(prevProps.status !== this.props.status) {
-    this.setState({
-      status: this.props.status
-    })
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status
+      })
+    }
   }
-}
 
-  render () {
+  render() {
     return (
       <div>
         {!this.state.editMode &&
@@ -44,7 +43,9 @@ componentDidUpdate(prevProps, prevState, snapshot) {
         }
         {this.state.editMode &&
         <div>
-          <input onChange={this.onStatusChange}  autoFocus={true} onBlur={this.deactivateEditMode}
+          <input onChange={this.onStatusChange}
+                 autoFocus={true}
+                 onBlur={this.deactivateEditMode}
                  value={this.state.status}/>
         </div>
         }
