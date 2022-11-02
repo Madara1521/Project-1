@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   render() {
-    if(!this.props.initialized) {
+    if (!this.props.initialized) {
       return <Preloader/>
     }
 
