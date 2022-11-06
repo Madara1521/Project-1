@@ -4,17 +4,20 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer, {withRouter} from './components/Profile/ProfileContainer'
+import {withRouter} from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer'
 import Login from './components/Login/Login'
-import React, {Component} from "react";
+import React, {Component, lazy} from "react";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./Redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./Redux/redux-store";
+import {withSuspense} from "./components/Hoc/withSuspense";
+
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"))
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"))
 
 
 class App extends Component {
@@ -33,8 +36,13 @@ class App extends Component {
         <Navbar/>
         <div className={'app-wrapper-content'}>
           <Routes>
-            <Route path={'/dialogs/*'} element={<DialogsContainer/>}/>
-            <Route path="/profile" element={<ProfileContainer/>}>
+            <Route path={'/dialogs/*'} element={
+              withSuspense(DialogsContainer)
+            }/>
+            <Route path="/profile" element={
+              <React.Suspense fallback={<div>Loading...</div>}>
+                <ProfileContainer/>
+              </React.Suspense>}>
               <Route path=":userId" element={<ProfileContainer/>}/>
             </Route>
             <Route path={'/news/*'} element={<News/>}/>
@@ -59,7 +67,7 @@ const AppContainer = compose(withRouter,
 const KanohaJsApp = (props) => {
   return <BrowserRouter>
     <Provider store={store}>
-      <AppContainer />
+      <AppContainer/>
     </Provider>
   </BrowserRouter>
 }
