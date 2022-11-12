@@ -3,24 +3,24 @@ import axios from 'axios'
 const instance = axios.create({
   withCredentials: true,
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-  headers: { 'API-KEY': '97abb313-6a93-4c21-bc36-992e7141e14a' }
+  headers: {'API-KEY': '97abb313-6a93-4c21-bc36-992e7141e14a'}
 
 })
 
 export const usersAPI = {
-  getUsers (currentPage = 1, pageSize = 10) {
+  getUsers(currentPage = 1, pageSize = 10) {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`)
       .then(response => {
         return response.data
       })
   },
-  follow (userId) {
+  follow(userId) {
     return instance.post(`follow/${userId}`)
   },
-  unfollow (userId) {
+  unfollow(userId) {
     return instance.delete(`follow/${userId}`)
   },
-  getProfile (userId) {
+  getProfile(userId) {
     console.warn('Obsolete method. Please profileAPI object.')
     return profileAPI.getProfile(userId)
   }
@@ -28,25 +28,35 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-  getProfile (userId) {
+  getProfile(userId) {
     return instance.get(`profile/` + userId)
   },
-  getStatus (userId) {
+  getStatus(userId) {
     return instance.get(`profile/status/` + userId)
   },
-updateStatus(status) {
-  return instance.put(`profile/status`, {status: status})
-}
+  updateStatus(status) {
+    return instance.put(`profile/status`, {status: status})
+  },
+  savePhoto(photoFile) {
+    const formData = new FormData()
+    formData.append('image', photoFile)
+
+    return instance.put(`profile/photo`, formData, {
+      headers: {
+        'Content-Type' : 'multipart/form-data'
+      }
+    })
+  }
 }
 
 export const authAPI = {
-  me () {
+  me() {
     return instance.get(`auth/me`)
   },
-  login (email, password, rememberMe = false) {
+  login(email, password, rememberMe = false) {
     return instance.post(`auth/login`, {email, password, rememberMe})
   },
-  logout () {
+  logout() {
     return instance.delete(`auth/login`)
   }
 }
