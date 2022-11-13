@@ -3,6 +3,7 @@ import Preloader from '../../common/Preloader/Preloader'
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from '../../Users/userPhoto.png'
 import {useState} from "react";
+import ProfileDataForm from "./ProfileDataForm";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
@@ -26,7 +27,9 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
         {editMode
           ? <ProfileDataForm profile={profile}/>
-          : <ProfileData goToEditMode={() => {setEditMode(true)}} profile={profile} isOwner={isOwner}/>}
+          : <ProfileData goToEditMode={() => {
+            setEditMode(true)
+          }} profile={profile} isOwner={isOwner}/>}
 
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
       </div>
@@ -36,18 +39,18 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
 const ProfileData = ({profile, isOwner, goToEditMode}) => {
   return <div>
-    {isOwner && <div><button onClick={goToEditMode}>edit</button></div>}
+    {isOwner && <div>
+      <button onClick={goToEditMode}>edit</button>
+    </div>}
     <div>
       <b>Full name</b>: {profile.fullName}
     </div>
     <div>
       <b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}
     </div>
-    {profile.lookingForAJob &&
-    <div>
+    {profile.lookingForAJob && <div>
       <b>My professional skills </b>: {profile.lookingForAJobDescription}
-    </div>
-    }
+    </div>}
     <div>
       <b>About me</b>: {profile.aboutMe}
     </div>
@@ -59,11 +62,6 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
   </div>
 }
 
-const ProfileDataForm = ({profile}) => {
-  return <div>
-Form
-  </div>
-}
 
 const Contact = ({contactTitle, contactValue}) => {
   return <div className={s.contact}><b>{contactTitle}</b>: {contactValue}</div>
