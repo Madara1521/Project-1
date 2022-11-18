@@ -13,9 +13,15 @@
 
 .mainPhoto {
     max-width: 300px;
+    border: black solid 6px;
+    border-radius: 20px;
 }
 
 .contact {
     padding-left: 10px;
 }
 
+.inputStyle {
+    max-width: 300px;
+    border: black solid 5px;
+}

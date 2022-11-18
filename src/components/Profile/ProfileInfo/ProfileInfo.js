@@ -7,7 +7,7 @@ import ProfileDataForm from "./ProfileDataForm";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
 
-  let [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState(false)
 
   if (!profile) {
     return <Preloader/>
@@ -31,8 +31,9 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
     <div>
       <div className={s.descriptionBlock}>
         <img src={profile.photos.large || userPhoto} className={s.mainPhoto}/>
-        {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
-
+        <div className={s.inputStyle}>
+        {isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
+        </div>
         {editMode
           ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
           : <ProfileData goToEditMode={() => {
